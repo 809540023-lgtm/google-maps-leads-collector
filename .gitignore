@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.env
+.env.*
+!.env.example
+data/*.tmp
+gmaps-output/
+google-maps-leads-mobile/.expo/
+google-maps-leads-mobile/dist/
+google-maps-leads-mobile/node_modules/
+google-maps-leads-mobile/mobile-*.png

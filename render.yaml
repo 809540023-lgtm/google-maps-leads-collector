@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: emily77-google-maps-leads-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn api:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.2
+      - key: GOOGLE_MAPS_LEADS_STORAGE_BACKEND
+        value: json
+
+  - type: web
+    name: emily77-google-maps-leads-mobile
+    runtime: static
+    plan: free
+    rootDir: google-maps-leads-mobile
+    buildCommand: npm ci && npm run export:web
+    staticPublishPath: dist
+    envVars:
+      - key: EXPO_PUBLIC_API_BASE_URL
+        value: https://emily77-google-maps-leads-api.onrender.com

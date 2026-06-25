@@ -1,0 +1,90 @@
+export type LeadStatus = "new" | "contacted" | "qualified" | "invalid";
+
+export type Lead = {
+  id: string;
+  name: string;
+  phone: string;
+  normalized_phone: string;
+  email: string;
+  website: string;
+  address: string;
+  category: string;
+  rating: number | null;
+  reviews: number | null;
+  latitude: number | null;
+  longitude: number | null;
+  distance_m: number | null;
+  distance_band: string;
+  lead_grade: string;
+  place_id: string;
+  google_maps_url: string;
+  status: LeadStatus;
+  tags: string[];
+  notes: string;
+  source_query: string;
+  source_job_id: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+export type Metrics = {
+  total: number;
+  with_phone: number;
+  with_email: number;
+  contacted: number;
+  qualified: number;
+  grade_a: number;
+  grade_b: number;
+  jobs: number;
+};
+
+export type ScrapeJob = {
+  id: string;
+  query: string;
+  location: string;
+  address: string;
+  search_mode: "grid" | "radius" | "simple";
+  query_terms: string[];
+  center_latitude: number | null;
+  center_longitude: number | null;
+  radius_m: number;
+  max_distance_m: number;
+  grid_cell_km: number;
+  zoom: number;
+  lang: string;
+  concurrency: number;
+  max_results: number;
+  depth: number;
+  extract_email: boolean;
+  strict_distance_filter: boolean;
+  geocoded_address: string;
+  status: string;
+  notes: string;
+  command: string;
+  queries_text: string;
+  grid_bbox: string;
+  geocode_source: string;
+  geocode_status: string;
+  imported_count: number;
+  created_at: string;
+  updated_at: string;
+};
+
+export type CreateJobPayload = {
+  query: string;
+  location: string;
+  address: string;
+  search_mode: "grid" | "radius" | "simple";
+  query_terms: string[];
+  radius_m: number;
+  max_distance_m: number;
+  grid_cell_km: number;
+  zoom: number;
+  lang: string;
+  concurrency: number;
+  max_results: number;
+  depth: number;
+  extract_email: boolean;
+  strict_distance_filter: boolean;
+  notes: string;
+};

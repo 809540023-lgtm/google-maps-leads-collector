@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "Leads Collector",
+    "slug": "google-maps-leads-mobile",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "scheme": "gmapsleads",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.linemily.googlemapsleads"
+    },
+    "android": {
+      "package": "com.linemily.googlemapsleads",
+      "adaptiveIcon": {
+        "backgroundColor": "#f7f8f5"
+      }
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
