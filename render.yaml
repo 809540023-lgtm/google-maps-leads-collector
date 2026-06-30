@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: emily77-google-maps-leads-api
+    name: google-maps-leads-api-809
     runtime: python
     plan: free
     buildCommand: pip install -r requirements.txt
@@ -13,7 +13,7 @@ services:
         value: json
 
   - type: web
-    name: emily77-google-maps-leads-mobile
+    name: google-maps-leads-mobile-809
     runtime: static
     plan: free
     rootDir: google-maps-leads-mobile
@@ -21,10 +21,10 @@ services:
     staticPublishPath: dist
     envVars:
       - key: EXPO_PUBLIC_API_BASE_URL
-        value: https://emily77-google-maps-leads-api.onrender.com
+        value: https://google-maps-leads-api-809.onrender.com
       - key: EXPO_PUBLIC_RELEASES_URL
-        value: https://github.com/emily77/google-maps-leads-collector/releases
+        value: https://github.com/809540023-lgtm/google-maps-leads-collector/releases
       - key: EXPO_PUBLIC_ANDROID_DOWNLOAD_URL
-        value: https://github.com/emily77/google-maps-leads-collector/releases
+        value: https://github.com/809540023-lgtm/google-maps-leads-collector/releases
       - key: EXPO_PUBLIC_IOS_DOWNLOAD_URL
-        value: https://github.com/emily77/google-maps-leads-collector/releases
+        value: https://github.com/809540023-lgtm/google-maps-leads-collector/releases

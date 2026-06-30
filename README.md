@@ -73,8 +73,8 @@ The app's Settings tab will show Android, iOS, and GitHub Releases download butt
 
 This repo includes `render.yaml` with two services:
 
-- `emily77-google-maps-leads-api`: FastAPI backend.
-- `emily77-google-maps-leads-mobile`: Expo web static export.
+- `google-maps-leads-api-809`: FastAPI backend.
+- `google-maps-leads-mobile-809`: Expo web static export.
 
 Render Blueprint setup:
 

@@ -46,7 +46,7 @@ const ANDROID_DOWNLOAD_URL = process.env.EXPO_PUBLIC_ANDROID_DOWNLOAD_URL?.trim(
 const IOS_DOWNLOAD_URL = process.env.EXPO_PUBLIC_IOS_DOWNLOAD_URL?.trim();
 const RELEASES_URL =
   process.env.EXPO_PUBLIC_RELEASES_URL?.trim() ||
-  "https://github.com/emily77/google-maps-leads-collector/releases";
+  "https://github.com/809540023-lgtm/google-maps-leads-collector/releases";
 const DEFAULT_TERMS = ["工廠", "公司", "倉儲", "物流", "辦公室", "汽車維修", "診所", "店家"].join("\n");
 const EMPTY_METRICS: Metrics = {
   total: 0,
