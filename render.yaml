@@ -15,7 +15,6 @@ services:
   - type: web
     name: google-maps-leads-mobile-809
     runtime: static
-    plan: free
     rootDir: google-maps-leads-mobile
     buildCommand: npm ci && npm run export:web
     staticPublishPath: dist
