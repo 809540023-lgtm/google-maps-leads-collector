@@ -23,7 +23,14 @@ import { LeadsApi } from "./src/api";
 import { colors } from "./src/theme";
 import { CreateJobPayload, Lead, LeadStatus, Metrics, ScrapeJob } from "./src/types";
 
-declare const process: { env: { EXPO_PUBLIC_API_BASE_URL?: string } };
+declare const process: {
+  env: {
+    EXPO_PUBLIC_API_BASE_URL?: string;
+    EXPO_PUBLIC_ANDROID_DOWNLOAD_URL?: string;
+    EXPO_PUBLIC_IOS_DOWNLOAD_URL?: string;
+    EXPO_PUBLIC_RELEASES_URL?: string;
+  };
+};
 
 type TabKey = "dashboard" | "leads" | "jobs" | "settings";
 type StatusFilter = "" | LeadStatus;
@@ -35,6 +42,11 @@ const DEFAULT_API_BASE =
     : Platform.OS === "android"
       ? "http://10.0.2.2:8000"
       : "http://127.0.0.1:8000";
+const ANDROID_DOWNLOAD_URL = process.env.EXPO_PUBLIC_ANDROID_DOWNLOAD_URL?.trim();
+const IOS_DOWNLOAD_URL = process.env.EXPO_PUBLIC_IOS_DOWNLOAD_URL?.trim();
+const RELEASES_URL =
+  process.env.EXPO_PUBLIC_RELEASES_URL?.trim() ||
+  "https://github.com/emily77/google-maps-leads-collector/releases";
 const DEFAULT_TERMS = ["工廠", "公司", "倉儲", "物流", "辦公室", "汽車維修", "診所", "店家"].join("\n");
 const EMPTY_METRICS: Metrics = {
   total: 0,
@@ -386,6 +398,23 @@ export default function App() {
         <Text style={styles.mono}>{apiBase}</Text>
         <Text style={styles.muted}>iOS/Web 本機通常使用 127.0.0.1；Android emulator 使用 10.0.2.2；實機可改成 Render 或區網位址。</Text>
       </View>
+      <View style={styles.panel}>
+        <Text style={styles.sectionTitle}>App 下載</Text>
+        <Text style={styles.muted}>Android 會使用 APK 或 Play 測試連結；iOS 會使用 TestFlight、Ad Hoc 或模擬器 build 連結。</Text>
+        <View style={styles.downloadGrid}>
+          {IOS_DOWNLOAD_URL ? (
+            <ActionButton icon="apple" label="iOS" onPress={() => void openUrl(IOS_DOWNLOAD_URL)} />
+          ) : (
+            <DownloadPlaceholder icon="apple" label="iOS" text="等待 TestFlight / Ad Hoc build" />
+          )}
+          {ANDROID_DOWNLOAD_URL ? (
+            <ActionButton icon="android" label="Android" onPress={() => void openUrl(ANDROID_DOWNLOAD_URL)} />
+          ) : (
+            <DownloadPlaceholder icon="android" label="Android" text="等待 APK build" />
+          )}
+          <ActionButton icon="github" label="Releases" onPress={() => void openUrl(RELEASES_URL)} />
+        </View>
+      </View>
     </ScrollView>
   );
 
@@ -532,6 +561,26 @@ function ActionButton({
       <MaterialCommunityIcons name={icon} size={19} color={colors.accent} />
       <Text style={styles.secondaryButtonText}>{label}</Text>
     </Pressable>
+  );
+}
+
+function DownloadPlaceholder({
+  label,
+  icon,
+  text
+}: {
+  label: string;
+  icon: keyof typeof MaterialCommunityIcons.glyphMap;
+  text: string;
+}) {
+  return (
+    <View style={styles.downloadPlaceholder}>
+      <MaterialCommunityIcons name={icon} size={19} color={colors.muted} />
+      <View style={styles.downloadTextWrap}>
+        <Text style={styles.downloadLabel}>{label}</Text>
+        <Text style={styles.downloadText}>{text}</Text>
+      </View>
+    </View>
   );
 }
 
@@ -738,6 +787,38 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 9,
     flexWrap: "wrap"
+  },
+  downloadGrid: {
+    flexDirection: "row",
+    gap: 9,
+    flexWrap: "wrap",
+    marginTop: 12
+  },
+  downloadPlaceholder: {
+    minHeight: 48,
+    minWidth: 138,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: colors.line,
+    backgroundColor: colors.bg,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8
+  },
+  downloadTextWrap: {
+    flex: 1,
+    minWidth: 0
+  },
+  downloadLabel: {
+    color: colors.ink,
+    fontWeight: "800"
+  },
+  downloadText: {
+    color: colors.muted,
+    fontSize: 11,
+    marginTop: 2
   },
   iconButton: {
     width: 42,

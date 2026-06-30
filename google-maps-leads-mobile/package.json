@@ -9,6 +9,11 @@
     "android": "expo start --android",
     "web": "expo start --web",
     "export:web": "expo export --platform web",
+    "build:android:apk": "npx eas-cli@latest build --platform android --profile preview",
+    "build:ios:preview": "npx eas-cli@latest build --platform ios --profile preview",
+    "build:ios:simulator": "npx eas-cli@latest build --platform ios --profile simulator",
+    "submit:android": "npx eas-cli@latest submit --platform android",
+    "submit:ios": "npx eas-cli@latest submit --platform ios",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

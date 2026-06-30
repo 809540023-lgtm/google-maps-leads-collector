@@ -2,6 +2,7 @@
   "expo": {
     "name": "Leads Collector",
     "slug": "google-maps-leads-mobile",
+    "owner": "emily77",
     "version": "0.1.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",

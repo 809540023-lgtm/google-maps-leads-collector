@@ -45,6 +45,30 @@ npm run web
 
 The app defaults to `http://127.0.0.1:8000` for iOS and web, and `http://10.0.2.2:8000` for Android emulators. On Render, set `EXPO_PUBLIC_API_BASE_URL` to the deployed API URL.
 
+## iOS And Android Downloads
+
+The mobile app is ready for Expo EAS builds:
+
+```bash
+cd google-maps-leads-mobile
+npm run build:android:apk
+npm run build:ios:preview
+```
+
+Use `build:android:apk` for a directly downloadable Android APK. Use `build:ios:preview` for an internal iOS build through Apple/TestFlight or Ad Hoc provisioning. For iOS simulator testing, use:
+
+```bash
+npm run build:ios:simulator
+```
+
+After EAS returns build URLs, set these Render environment variables on the static site:
+
+- `EXPO_PUBLIC_ANDROID_DOWNLOAD_URL`
+- `EXPO_PUBLIC_IOS_DOWNLOAD_URL`
+- `EXPO_PUBLIC_RELEASES_URL`
+
+The app's Settings tab will show Android, iOS, and GitHub Releases download buttons automatically.
+
 ## Render
 
 This repo includes `render.yaml` with two services:

@@ -22,3 +22,9 @@ services:
     envVars:
       - key: EXPO_PUBLIC_API_BASE_URL
         value: https://emily77-google-maps-leads-api.onrender.com
+      - key: EXPO_PUBLIC_RELEASES_URL
+        value: https://github.com/emily77/google-maps-leads-collector/releases
+      - key: EXPO_PUBLIC_ANDROID_DOWNLOAD_URL
+        value: https://github.com/emily77/google-maps-leads-collector/releases
+      - key: EXPO_PUBLIC_IOS_DOWNLOAD_URL
+        value: https://github.com/emily77/google-maps-leads-collector/releases
