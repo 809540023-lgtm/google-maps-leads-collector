@@ -1,5 +1,7 @@
 # Google Maps Leads Collector
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/809540023-lgtm/google-maps-leads-collector)
+
 Google Maps Leads Collector is a FastAPI and Expo app for building a searchable phone lead database from Google Maps scraper output. It supports arbitrary global centers: address, place name, direct latitude/longitude, or Google Maps URL.
 
 ## Published Workflow
